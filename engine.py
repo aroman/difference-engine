@@ -20,14 +20,12 @@ def main():
     differences =  list(map(partial(apply, difference, terms), range(DEGREE)))
     coefficients = list(map(partial(solve, 0), differences))
 
-    for i, d in enumerate(differences):
-        if not d: continue
+    # print difference functions
+    for i, d in enumerate(filter(None, differences[1:]), start=1):
         d = sorted(d, key=lambda t: -t.exponent)
         print('Δ{}: {}'.format(i, ' + '.join(map(rep, d))))
 
-    for _ in range(cranks):
-        coefficients = crank(coefficients)
-    display(extend(coefficients))
+    display(extend(apply(crank, coefficients, cranks)))
 
 def rep(t):
     c = t.coefficient if t.coefficient > 1 else ''
