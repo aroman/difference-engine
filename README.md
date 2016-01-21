@@ -24,7 +24,7 @@ number of cranks: 3
 2   0   2   0   0   0   0   0
 ```
 
-# Advanced use (embellishments)
+## Advanced use (embellishments)
 
 ### Polynomial input
 
