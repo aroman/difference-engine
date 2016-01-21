@@ -9,7 +9,7 @@ from collections import namedtuple
 
 DEGREE = int(argv[1]) if (len(argv) > 1 and argv[1].isdigit()) else 8
 flatten = lambda i: chain.from_iterable(i)
-extend = partial(lambda n, xs: (xs + [0] * n)[:n], DEGREE)
+extend = lambda xs: (xs + [0] * DEGREE)[:DEGREE]
 Term = namedtuple('PolynomialTerm', ['coefficient', 'exponent'])
 
 def main():
@@ -17,7 +17,7 @@ def main():
     terms = parsePolynomial(input('f(x): '))
     cranks = int(input('number of cranks: '))
 
-    differences =  list(map(partial(apply, difference, terms), range(DEGREE)))
+    differences = list(map(partial(apply, difference, terms), range(DEGREE)))
     coefficients = list(map(partial(solve, 0), differences))
 
     # print difference functions
@@ -71,7 +71,7 @@ def successorTerm(t):
 
 def crank(values):
     pairs = zip(values, values[1:])
-    return list(map(sum, pairs))
+    return list(map(sum, zip(values, values[1:])))
 
 def display(values, rows=4):
     digits = lambda i: list(map(int, reversed(str(i))))
