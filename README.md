@@ -16,7 +16,7 @@ Difference Engine Simulator (degree = 8)
 f(x): x^2 + 3x + 4
 number of cranks: 3
 Δ0: x^2 + 3x + 4
-Δ1: 2x + 4
+Δ1: 2x + 3
 Δ2: 2
 0   0   0   0   0   0   0   0
 0   0   0   0   0   0   0   0
